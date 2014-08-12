@@ -2,6 +2,13 @@
 /* Source: https://github.com/dciccale/css3-github-ribbon */
 /* Define classes for example, definition, problem etc. */
 /* Choose meaningful colors for background and text */
+pre {
+ white-space: pre-wrap;       /* css-3 */
+ white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+ white-space: -pre-wrap;      /* Opera 4-6 */
+ white-space: -o-pre-wrap;    /* Opera 7 */
+ word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}
 
 .example {
   background-color: #121621;

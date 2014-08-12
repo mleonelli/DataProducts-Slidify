@@ -43,13 +43,55 @@
     <!-- SLIDES -->
     <slide class="" id="slide-1" style="background:;">
   <hgroup>
-    <h2>Read-And-Delete</h2>
+    <h2>Motivation</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>It is somehow interesting(!) what is your life expentancy and death probability around your country of origin...</p>
+
+<p>Data has been retrieved from the official statistical Italian institution <a href="http://www.istat.it">Istat</a>.</p>
+
+<p>Among different years, I chose 2012; the entre dataset can be downloaded <a href="http://demo.istat.it/unitav2012/download.html">here</a></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-2" style="background:;">
+  <hgroup>
+    <h2>Observations</h2>
   </hgroup>
   <article data-timings="">
     <ol>
-<li>Edit YAML front matter</li>
-<li>Write using R Markdown</li>
-<li>Use an empty line followed by three dashes to separate slides!</li>
+<li>Survivors is the number of those surviving to exact age x from the initial generation of 100.000 births</li>
+<li>Deaths is the number of deaths occurring to the population in age group from x to x+1</li>
+<li>Expectation of life denotes the average expectation of life of a group of survivors on reaching age x.</li>
+<li>Probability of surviving is the probability that a person of exact age x (as per lived years at the date of January 1 st of the reference year) survives for one year </li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>Results</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>I tried to use different Shiny and R functionalities in order to create an interactive application.</p>
+
+<ol>
+<li>Shiny templates (fluidpage, sidebarLayout, tabsetPanel,...)</li>
+<li>Shiny inputs/outputs (uiOutput, selectInput, selectizeInput, sliderInput, plotOutput, tableOutput...)</li>
+<li><p>ggplot2 (Facets, Aesthetics, ...)</p>
+
+<p>A sample plot can be created as:</p>
+
+<pre><code class="r">data &lt;- read.csv(&quot;datiprovincialicompleti2012.csv&quot;)
+selectedData &lt;- data[data$District %in% c(&quot;Milano&quot;, &quot;Roma&quot;, &quot;Imperia&quot;), ]
+selectedData &lt;- selectedData[selectedData$Sex %in% c(&quot;Male&quot;, &quot;Female&quot;), ]
+selectedData &lt;- selectedData[selectedData$Age &gt;= 50 &amp; selectedData$Age &lt;= 100, c(&quot;Age&quot;, &quot;Deaths&quot;, &quot;District&quot;, &quot;Sex&quot;)]
+g &lt;- ggplot(aes_string(x = &quot;Age&quot;, y = &quot;Deaths&quot;), data = selectedData) + facet_grid(. ~ Sex) + geom_line(aes(color = District)) + geom_point(aes(color = District))
+</code></pre></li>
 </ol>
 
   </article>
@@ -58,10 +100,11 @@
 
 <slide class="class" id="id" style="background:;">
   <hgroup>
-    <h2>Slide 2</h2>
+    <h2>Results (cont.)</h2>
   </hgroup>
   <article data-timings="">
-    
+    <p><img src="assets/fig/unnamed-chunk-2.png" alt="plot of chunk unnamed-chunk-2"> </p>
+
   </article>
   <!-- Presenter Notes -->
 </slide>
@@ -72,14 +115,26 @@
     <ul>
       <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=1 title='Read-And-Delete'>
+        data-slide=1 title='Motivation'>
          1
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=2 title='Slide 2'>
+        data-slide=2 title='Observations'>
          2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Results'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Results (cont.)'>
+         4
       </a>
     </li>
   </ul>
