@@ -51,13 +51,20 @@ I tried to use different Shiny and R functionalities in order to create an inter
   selectedData <- selectedData[selectedData$Age >= 50 & selectedData$Age <= 100, c("Age", "Deaths", "District", "Sex")]
   g <- ggplot(aes_string(x = "Age", y = "Deaths"), data = selectedData) + facet_grid(. ~ Sex) + geom_line(aes(color = District)) + geom_point(aes(color = District))
   ```
+  
+  ```
+  ## Error: could not find function "ggplot"
+  ```
 
 --- .class #id 
 
 
 ## Results (cont.)
 
-![plot of chunk unnamed-chunk-2](assets/fig/unnamed-chunk-2.png) 
+
+```
+## Error: object 'g' not found
+```
 
 
 
